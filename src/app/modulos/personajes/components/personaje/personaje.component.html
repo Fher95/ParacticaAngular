@@ -1,0 +1,5 @@
+<app-formulario-personaje
+  [inCatalogoEditorial]="catalogoEditorial$ | async"
+  [inCatalogoTipoPersonaje]="catalogoTipoPersonaje$ | async"
+  (outCuerpoPersonaje) = "onCuerpoPersonaje($event)"
+></app-formulario-personaje>

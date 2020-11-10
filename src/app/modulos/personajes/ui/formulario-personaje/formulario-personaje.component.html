@@ -1,0 +1,92 @@
+<app-contenedor [inTituloCabecera]="'Formulario del personaje'">
+  <form [formGroup]="formulario" #form="ngForm" (ngSubmit)="guardarInfo()" autocomplete="off">
+    <div fxLayout="row" fxLayoutGap="20px">
+      <mat-card fxFlex="1 1 calc(20% - 20px)">
+        <mat-card-header fxLayout="row" fxLayoutAlign="center center">
+          <div mat-card-avatar></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+          alt="Photo of a Shiba Inu"
+        />
+        <mat-card-content fxLayoutAlign="center center">
+          <span>La fecha</span>
+        </mat-card-content>
+      </mat-card>
+
+      <div fxLayout="column" fxLayoutGap="20px" fxFlex="1 1 calc(80% - 20px)">
+        <div fxLayout="row" fxLayoutGap="20px">
+          <mat-form-field fxFlex="1 1 calc(33% - 20px)">
+            <mat-label>Nombre del super heroe</mat-label>
+            <input matInput formControlName="nombreSuperHeroe" />
+          </mat-form-field>
+
+          <mat-form-field fxFlex="1 1 calc(33% - 20px)">
+            <mat-label>Nombre del personaje</mat-label>
+            <input matInput formControlName="nombrePersonaje" />
+          </mat-form-field>
+
+          <mat-form-field fxFlex="1 1 calc(33% - 20px)">
+            <mat-label>Fecha de primera aparicion</mat-label>
+            <input
+              matInput
+              type="date"
+              formControlName="fechaPrimeraAparicion"
+            />
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="20px">
+          <mat-form-field fxFlex="1 1 calc(25% - 20px)">
+            <mat-label>Ciudad de origen</mat-label>
+            <input matInput formControlName="ciudadOrigen" />
+          </mat-form-field>
+
+          <mat-form-field fxFlex="1 1 calc(25% - 20px)">
+            <mat-label>Imagen personaje</mat-label>
+            <mat-select formControlName="imagen">
+              <mat-option *ngFor="let food of foods" [value]="food">
+                {{ food }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="1 1 calc(25% - 20px)">
+            <mat-label>Tipo personaje</mat-label>
+            <mat-select formControlName="tipoPersonaje">
+              <mat-option *ngFor="let tipPersonaje of inCatalogoTipoPersonaje" [value]="tipPersonaje.id">
+                {{ tipPersonaje.descripcion }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="1 1 calc(25% - 20px)">
+            <mat-label>Editorial</mat-label>
+            <mat-select formControlName="editorial">
+              <mat-option
+                *ngFor="let editorial of inCatalogoEditorial"
+                [value]="editorial.id"
+              >
+                {{ editorial.descripcion }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field>
+          <mat-label>Biografia</mat-label>
+          <textarea matInput formControlName="biografia"></textarea>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+          <button mat-raised-button color="primary">Guardar</button>
+          <button mat-raised-button color="warn" type="button">Cancelar</button>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</app-contenedor>
